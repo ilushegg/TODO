@@ -1,1 +1,31 @@
-<app-calendar></app-calendar>
+<nz-layout class="layout">
+  <nz-sider nzCollapsible nzWidth="200px">
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item (click)="choice = 1">
+        <span nz-icon nzType="pie-chart"></span>
+        <span>Сегодня</span>
+      </li>
+      <li nz-menu-item (click)="choice = 2">
+        <span nz-icon nzType="desktop"></span>
+        <span>Месяц</span>
+      </li>
+      <li nz-menu-item (click)="choice = 3">
+        <span nz-icon nzType="desktop"></span>
+        <span>Все задачи</span>
+      </li>
+      
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-content>
+      <div *ngIf="choice === 1">
+        <app-organizer ></app-organizer>
+      </div>
+      <div *ngIf="choice === 2">
+        <app-calendar></app-calendar>
+      </div>
+    </nz-content>
+    <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>
+  </nz-layout>
+</nz-layout>
