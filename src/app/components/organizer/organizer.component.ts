@@ -49,7 +49,7 @@ export class OrganizerComponent implements OnInit {
     }
 
     this.taskService.create(task).subscribe(res => {
-      this.tasks.push(res);
+      this.tasks.unshift(res);
       this.form.reset();
     });
     this.sortArray();
@@ -58,7 +58,6 @@ export class OrganizerComponent implements OnInit {
   remove(task: Task){
     this.taskService.remove(task).subscribe(() => {
       this.tasks = this.tasks.filter(t => t.id !== task.id)
-      console.log(this.tasks)
     }, err => console.error(err)
     );
     this.sortArray();

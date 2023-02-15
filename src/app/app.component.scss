@@ -29,7 +29,8 @@ nz-content {
   background-image: url(../assets/images/bg.jpg);
   background-position: center;
   background-size: cover;
-
+  animation: animShow 1s;
+ 
 }
 
 
@@ -68,3 +69,10 @@ nz-footer {
   font-size: 1rem;
 }
 
+[nz-menu-item]:hover {
+  background-color: $ligt-gray;
+  // & span {
+
+  //   animation: animZoom .3s;
+  // }
+}

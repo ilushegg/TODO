@@ -9,7 +9,7 @@
   overflow-y: scroll;
   overflow-x: hidden;
   max-height: 80vh;
-  animation: anim .3s;
+  animation: animFromDown $transition ease-in-out;
 }
 &__add {
   position: absolute;
@@ -20,6 +20,8 @@
 
 &__empty {
   text-align: center;
+  animation: animFromUp $transition ease-in-out;
+
 }
 }
 
@@ -31,6 +33,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  animation: animFromUp .3s ;
     &__start, &__end {
       display: flex;
       
@@ -75,14 +78,3 @@ nz-input-group {
   padding-left: 10px !important;
 }
 
-@keyframes anim {
-  0% {
-    opacity: 0;
-    transform: translateY(-100px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-
-  }
-}

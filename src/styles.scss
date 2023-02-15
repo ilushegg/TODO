@@ -4,6 +4,8 @@
 $index: calc(1vh + 1vw);
 $color: #2E2E2F;
 $dark-gray: #1F1F1F;
+$ligt-gray: #424242;
+$transition: .3s;
 
 * {
   margin: 0;
@@ -60,5 +62,46 @@ body {
   & [nz-button] {
     border-radius: $index !important;
 
+  }
+}
+
+
+@keyframes animFromDown {
+  0% {
+    opacity: 0;
+    transform: translateY(+50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes animFromUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes animZoom{
+  0% {
+    font-size: 75%;
+  }
+  100% {
+    font-size: 100%;
+  }
+}
+
+@keyframes animShow{
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

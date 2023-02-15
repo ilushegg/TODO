@@ -5,5 +5,7 @@
   padding: 25px;
   background-color: $dark-gray;
   width: 400px;
+  animation: animFromDown calc($transition / 2) ease-in-out;
+
 }
 

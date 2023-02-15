@@ -2,10 +2,12 @@
 <div class="organizer__wrapper">
 
   <ul *ngIf="tasks.length; else noTasks">
-    <li class="task" *ngFor="let task of tasks; let i = index">
+    <li class="task" *ngFor="let task of tasks">
       <div class="task__start">
         <label class="task__check" nz-checkbox [(ngModel)]="task.done" (ngModelChange)="check(task)"></label>
-        <div class="task__title">
+        <div class="task__title" [ngStyle]="{
+          'text-decoration': task.done ? 'line-through' : 'none'
+        }">
           {{ task.title }}
         </div>
 
