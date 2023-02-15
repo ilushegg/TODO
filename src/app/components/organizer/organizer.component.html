@@ -1,27 +1,44 @@
 
-<main>
+<div class="organizer__wrapper">
+
   <ul *ngIf="tasks.length; else noTasks">
     <li class="task" *ngFor="let task of tasks; let i = index">
-      <label nz-checkbox [(ngModel)]="task.done" (ngModelChange)="check(task)"></label>
-      <span>
+      <div class="task__start">
+        <label class="task__check" nz-checkbox [(ngModel)]="task.done" (ngModelChange)="check(task)"></label>
+        <div class="task__title">
+          {{ task.title }}
+        </div>
 
-        {{ task.title }}
-      </span>
-      <button class="btn btn-primary" (click)="remove(task)">Remove</button>
+      </div>
+      <div class="task__end">
+        <span class="task__edit" nz-icon nzType="edit" (click)="showModal(task)" nzTheme="outline"></span>
+      <nz-modal [(nzVisible)]="isVisibleModal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+        <ng-container *nzModalContent>
+          <form [formGroup]="editForm">
+
+              <input type="text" formControlName="title" nz-input />
+          
+          </form>
+        </ng-container>
+      </nz-modal>
+        <span class="task__remove" nz-icon nzType="close-circle" nzTheme="outline" (click)="remove(task)"></span>
+
+      </div>
+
     </li>
   </ul>
   <ng-template #noTasks>
-    <p class="text-center">No tasks yet...</p>
+    <p class="organizer__empty">У вас пока нет задач на этот день</p>
   </ng-template>
-</main>
-
-<footer>
-  <form [formGroup]="form" (ngSubmit)="submit()">
-    <input type="text" formControlName="title">
-
-    <button 
-      type="submit"
-      class="btn btn-primary btn-block"
->Add</button>
+</div>
+<div class="organizer__add">
+  <form [formGroup]="form" (ngSubmit)="add()">
+    <nz-input-group [nzPrefix]="prefixTemplateUser">
+      <input type="text" formControlName="title" nz-input placeholder="Добавить" />
+    </nz-input-group>
+    <ng-template #prefixTemplateUser><span nz-icon nzType="plus" nzTheme="outline"></span></ng-template>
+  
   </form>
-</footer>
+
+</div>
+

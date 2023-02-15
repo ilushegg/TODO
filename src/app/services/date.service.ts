@@ -12,11 +12,19 @@ export class DateService {
   constructor() { }
 
 
-  changeDate(date: moment.Moment) {
+  changeDate(date: Date) {
     const value = this.date.value.set({
-      date: date.date(),
-      month: date.month()
+      date: date.getDate(),
+      month: date.getMonth(),
+      year: date.getFullYear()
     });
+    console.log(value)
+
     this.date.next(value);
+    console.log(this.date)
+  }
+
+  setDateToday() {
+    this.date.next(moment());
   }
 }

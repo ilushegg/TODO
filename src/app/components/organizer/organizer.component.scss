@@ -1,0 +1,88 @@
+@import './../../../styles.scss';
+
+
+.organizer {
+  &__wrapper {
+  padding: 25px;
+  border-radius: $index;
+  background: $dark-gray;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 80vh;
+  animation: anim .3s;
+}
+&__add {
+  position: absolute;
+  bottom: 1%;
+  left: 25px;
+  right: 25px;
+}
+
+&__empty {
+  text-align: center;
+}
+}
+
+.task {
+  padding: 20px;
+  border-radius: $index;
+  background: #262626;
+  margin-bottom: $index;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+    &__start, &__end {
+      display: flex;
+      
+    }
+
+    &__check {
+      margin-right: 15px;
+    }
+    
+    &__title {
+      font-size: 1rem;
+      max-width: 50vw;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &__remove, &__edit {
+      font-size: calc($index * 0.8);
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      transition: .3s ease;
+      margin-left: 10px;
+      &:hover {
+        cursor: pointer;
+        color: #177DDC;
+      }
+    }
+
+}
+
+nz-input-group {
+  padding: 15px !important;
+  border-radius: $index !important;
+
+
+}
+
+[nz-input] {
+  font-size: 1rem;
+  padding-left: 10px !important;
+}
+
+@keyframes anim {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+
+  }
+}

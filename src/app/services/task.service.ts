@@ -7,13 +7,14 @@ import {v4 as guid} from 'uuid';
   providedIn: 'root'
 })
 export class TaskService {
-  tasks: Task[] | any;
+  tasks: Task[] | undefined = [];
   keyWord = 'todo';
 
   constructor() { }
 
   load(date: moment.Moment): Observable<Task[]> {
     this.tasks = allStorage(this.keyWord);
+    this.tasks = this.tasks.filter(t => t.date === date.format('DD-MM-YYYY'));
     return of(this.tasks);
   }
 
@@ -28,8 +29,9 @@ export class TaskService {
     return of(void 0);
   }
 
-  edit(task: Task) {
-    localStorage.setItem(`${this.keyWord} ${task.id}`, JSON.stringify(task))
+  edit(task: Task): Observable<Task>  {
+    localStorage.setItem(`${this.keyWord} ${task.id}`, JSON.stringify(task));
+    return of(task);
   }
 
   

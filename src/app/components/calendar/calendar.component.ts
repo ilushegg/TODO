@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
+import { DateService } from 'src/app/services/date.service';
 
 @Component({
   selector: 'app-calendar',
@@ -7,18 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalendarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dateService: DateService) { }
 
   ngOnInit(): void {
   }
 
   onValueChange(value: Date): void {
-    console.log(`Current value: ${value}`);
+    this.dateService.changeDate(value);
   }
 
   onPanelChange(change: { date: Date; mode: string }): void {
     console.log(`Current value: ${change.date}`);
     console.log(`Current mode: ${change.mode}`);
   }
+
 
 }

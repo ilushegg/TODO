@@ -2,28 +2,34 @@
   <nz-sider nzCollapsible nzWidth="200px">
     <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
-      <li nz-menu-item (click)="choice = 1">
-        <span nz-icon nzType="pie-chart"></span>
-        <span>Сегодня</span>
+      <li nz-menu-item (click)="choice = 'today'; today()" nzSelected="true">
+        <span nz-icon nzType="bulb" nzTheme="outline"></span>
+        <span class="sidemenu__title">Сегодня</span>
       </li>
-      <li nz-menu-item (click)="choice = 2">
-        <span nz-icon nzType="desktop"></span>
-        <span>Месяц</span>
+      <li nz-menu-item (click)="choice = 'calendar'">
+        <span nz-icon nzType="calendar" nzTheme="outline"></span>
+        <span class="sidemenu__title">Календарь</span>
       </li>
-      <li nz-menu-item (click)="choice = 3">
+      <li nz-menu-item (click)="choice = 'all'">
         <span nz-icon nzType="desktop"></span>
-        <span>Все задачи</span>
+        <span class="sidemenu__title">Все задачи</span>
       </li>
       
     </ul>
   </nz-sider>
   <nz-layout>
     <nz-content>
-      <div *ngIf="choice === 1">
-        <app-organizer ></app-organizer>
-      </div>
-      <div *ngIf="choice === 2">
-        <app-calendar></app-calendar>
+      <div class="container">
+
+        <div class="main__today"  *ngIf="choice === 'today'">
+          
+          <app-organizer ></app-organizer>
+        </div>
+        <div class="main__month"  *ngIf="choice === 'calendar'">
+          <app-calendar></app-calendar>
+          <app-organizer></app-organizer>
+
+        </div>
       </div>
     </nz-content>
     <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>

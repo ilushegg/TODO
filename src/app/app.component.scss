@@ -1,3 +1,5 @@
+@import './../styles.scss';
+
 .logo {
   height: 32px;
   margin: 16px;
@@ -5,7 +7,14 @@
 }
 
 .layout {
-  min-height: 100vh;
+  height: 100vh;
+  // background-color: #1a1a1a;
+
+}
+
+nz-layout {
+  // background-color: #1a1a1a;
+
 }
 
 nz-header {
@@ -14,8 +23,16 @@ nz-header {
 }
 
 nz-content {
-  margin: 0 16px;
+  margin: 0;
+  padding: $index;
+  position: relative;
+  background-image: url(../assets/images/bg.jpg);
+  background-position: center;
+  background-size: cover;
+
 }
+
+
 
 nz-breadcrumb {
   margin: 16px 0;
@@ -29,4 +46,25 @@ nz-breadcrumb {
 
 nz-footer {
   text-align: center;
+  background-color: #1a1a1a;
+
 }
+
+.main__month {
+  display: flex;
+  justify-content: space-between;
+
+  & app-calendar {
+    margin-right: 15px;
+  }
+
+  & app-organizer {
+    max-width: 50vw;
+    width: 100%;
+  }
+}
+
+.sidemenu__title {
+  font-size: 1rem;
+}
+

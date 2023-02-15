@@ -1,10 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;600;700&display=swap');
+
+
+$index: calc(1vh + 1vw);
+$color: #2E2E2F;
+$dark-gray: #1F1F1F;
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  color-scheme: dark light;
+}
+
+ul {
+  list-style-type: none;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
+}
+
+body {
+  overflow: hidden;
+  max-width: 100vw;
+  max-height: 100vh;
+  font-size: 16px;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: $color none;
+}
+
+/* для Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  height: 12px;
+  width: 12px;
+}
+*::-webkit-scrollbar-track {
+  background: none;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: $color;
+  border-radius: 5px;
+  border: none;
+}
+
+
+.ant-modal-content {
+  border-radius: $index !important;
+  & [nz-input]  {
+    margin-top: 15px;
+    height: 40px;
+    border-radius: $index !important;
+  }
+
+  & [nz-button] {
+    border-radius: $index !important;
+
+  }
 }

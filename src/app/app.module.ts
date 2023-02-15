@@ -17,6 +17,9 @@ import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { OrganizerComponent } from './components/organizer/organizer.component';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 registerLocaleData(ru);
 
@@ -38,6 +41,9 @@ registerLocaleData(ru);
     NzBreadCrumbModule,
     NzMenuModule,
     NzCheckboxModule,
+    NzIconModule,
+    NzInputModule,
+    NzModalModule,
   ],
   providers: [
     { provide: NZ_I18N, useValue: ru_RU }

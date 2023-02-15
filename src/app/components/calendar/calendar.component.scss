@@ -1,3 +1,9 @@
-.container {
-  max-width: 1200px;
+@import '../../../styles.scss';
+
+.calendar__wrapper {
+  border-radius: $index;
+  padding: 25px;
+  background-color: $dark-gray;
+  width: 400px;
 }
+
