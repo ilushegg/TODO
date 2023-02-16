@@ -8,7 +8,7 @@
   background: $dark-gray;
   overflow-y: scroll;
   overflow-x: hidden;
-  max-height: 80vh;
+  max-height: 75vh;
   animation: animFromDown $transition ease-in-out;
 }
 &__add {
@@ -77,4 +77,5 @@ nz-input-group {
   font-size: 1rem;
   padding-left: 10px !important;
 }
+
 

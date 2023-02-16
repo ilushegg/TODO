@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class DateService {
-  public date: BehaviorSubject<any> = new BehaviorSubject(moment());
+  public date: BehaviorSubject<any> = new BehaviorSubject(moment().locale('ru'));
 
   constructor() { }
 

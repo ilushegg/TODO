@@ -14,24 +14,30 @@
         <span nz-icon nzType="desktop"></span>
         <span class="sidemenu__title">Все задачи</span>
       </li>
-      
     </ul>
   </nz-sider>
   <nz-layout>
     <nz-content>
       <div class="container">
-
-        <div class="main__today"  *ngIf="choice === 'today'">
-          <h1 class="main__today__title">Привет</h1>
-          <app-organizer ></app-organizer>
+        <div class="main__today" *ngIf="choice === 'today'">
+          <div class="main__today__header">
+            <div>
+              <h1 class="main__today__title">Привет</h1>
+              <h1 class="main__today__title">Что вы запланировали на сегодня?</h1>
+            </div>
+            <div id="today">
+              <div id="week">{{ dateService.date | async | moment: 'ddd'}}</div>
+              <div id="day">{{ dateService.date | async | moment: 'DD'}}</div>
+              <div id="month">{{ dateService.date | async | moment: 'MMMM'}}</div>
+            </div>
+          </div>
+          <app-organizer></app-organizer>
         </div>
-        <div class="main__month"  *ngIf="choice === 'calendar'">
+        <div class="main__month" *ngIf="choice === 'calendar'">
           <app-calendar></app-calendar>
           <app-organizer></app-organizer>
-
         </div>
       </div>
     </nz-content>
-    <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>
   </nz-layout>
 </nz-layout>

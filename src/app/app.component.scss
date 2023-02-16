@@ -12,11 +12,6 @@
 
 }
 
-nz-layout {
-  // background-color: #1a1a1a;
-
-}
-
 nz-header {
   background: #fff;
   padding: 0;
@@ -51,7 +46,22 @@ nz-footer {
 
 }
 
-.main__month {
+.main {
+  &__today {
+    &__title {
+      font-weight: 900;
+      line-height: 1.5;
+      font-size: calc(1.5 * $index);
+    }
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: $index;
+    }
+  }
+
+  &__month {
   display: flex;
   justify-content: space-between;
 
@@ -64,6 +74,7 @@ nz-footer {
     width: 100%;
   }
 }
+}
 
 .sidemenu__title {
   font-size: 1rem;
@@ -75,4 +86,25 @@ nz-footer {
 
   //   animation: animZoom .3s;
   // }
+}
+
+#today {
+  text-align: center;
+}
+
+#week {
+  font-size: 24px;
+  line-height: 1;
+}
+#day {
+  font-size: 54px;
+  line-height: 1;
+  font-weight: 900;
+  font-family: 'Roboto', sans-serif;
+}
+#month {
+  font-size: 16px;
+  line-height: 1;
+
+  text-transform: uppercase;
 }

@@ -38,6 +38,7 @@ export class OrganizerComponent implements OnInit {
       this.tasks = res;
       this.sortArray();
     })
+    
   }
 
 

@@ -20,6 +20,7 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { MomentPipe } from './services/moment.pipe';
 
 registerLocaleData(ru);
 
@@ -27,7 +28,8 @@ registerLocaleData(ru);
   declarations: [
     AppComponent,
     CalendarComponent,
-    OrganizerComponent
+    OrganizerComponent,
+    MomentPipe,
   ],
   imports: [
     BrowserModule,

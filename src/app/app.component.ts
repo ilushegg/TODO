@@ -10,8 +10,9 @@ export class AppComponent{
   title = 'TODO';
 
   choice: string = 'today';
+  
 
-  constructor(private dateService: DateService) {
+  constructor(public dateService: DateService) {
 
   }
 

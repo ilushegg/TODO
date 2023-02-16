@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;600;700&family=Roboto:wght@900&display=swap');
+
+
 
 
 $index: calc(1vh + 1vw);
@@ -63,6 +65,12 @@ body {
     border-radius: $index !important;
 
   }
+}
+
+.ant-checkbox-inner {
+  border-radius: 50% !important;
+  height: 18px !important;
+  width: 18px !important;
 }
 
 
