@@ -18,13 +18,10 @@ export class DateService {
       month: date.getMonth(),
       year: date.getFullYear()
     });
-    console.log(value)
-
     this.date.next(value);
-    console.log(this.date)
   }
 
   setDateToday() {
-    this.date.next(moment());
+    this.date.next(moment().locale('ru'));
   }
 }

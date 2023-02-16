@@ -1,10 +1,10 @@
 @import './../styles.scss';
 
-.logo {
-  height: 32px;
-  margin: 16px;
-  background: rgba(255, 255, 255, 0.3);
-}
+// .logo {
+//   height: 32px;
+//   margin: 16px;
+//   background: rgba(255, 255, 255, 0.3);
+// }
 
 .layout {
   height: 100vh;
@@ -21,7 +21,7 @@ nz-content {
   margin: 0;
   padding: $index;
   position: relative;
-  background-image: url(../assets/images/bg.jpg);
+  background-image: url(../assets/images/night-bg.jpg);
   background-position: center;
   background-size: cover;
   animation: animShow 1s;
@@ -48,6 +48,8 @@ nz-footer {
 
 .main {
   &__today {
+  animation: animShow .5s;
+
     &__title {
       font-weight: 900;
       line-height: 1.5;
@@ -81,7 +83,7 @@ nz-footer {
 }
 
 [nz-menu-item]:hover {
-  background-color: $ligt-gray;
+  background-color: $light-gray;
   // & span {
 
   //   animation: animZoom .3s;

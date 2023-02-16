@@ -10,14 +10,18 @@ export class AppComponent{
   title = 'TODO';
 
   choice: string = 'today';
-  
+
 
   constructor(public dateService: DateService) {
 
   }
 
+
   today() {
     this.dateService.setDateToday();
+    this.dateService.date.subscribe(res => {
+      console.log(res)
+    })
   }
 
 

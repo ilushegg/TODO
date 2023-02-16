@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import * as moment from 'moment';
 import { switchMap, Observable } from 'rxjs';
 import { DateService } from 'src/app/services/date.service';
+import { SortService } from 'src/app/services/sort.service';
 import { TaskService } from 'src/app/services/task.service';
 import { Task } from '../../models/task.model';
 
@@ -22,21 +23,25 @@ export class OrganizerComponent implements OnInit {
   })
   task: Task = {
     title: '',
-    done: false
+    done: false,
+    important: false
   };
 
   tasks: Task[] = [];
 
   isVisibleModal = false;
+
   
-  constructor(private dateService: DateService, private taskService: TaskService, private formBuilder: FormBuilder) { }
+  
+  constructor(private dateService: DateService, private taskService: TaskService, private formBuilder: FormBuilder, private sortService: SortService) { }
 
   ngOnInit(): void {
     this.dateService.date.pipe(
       switchMap(value => this.taskService.load(value))
     ).subscribe(res => {
       this.tasks = res;
-      this.sortArray();
+      
+      this.sortService.sortArrayByLocalStorage(this.tasks);
     })
     
   }
@@ -45,37 +50,97 @@ export class OrganizerComponent implements OnInit {
   add() {
     const task: Task = {
       title:  this.form.controls.title.value!,
-      date: this.dateService.date.value.format('DD-MM-YYYY'),
-      done: false
+      date: this.dateService.date.value.format('DD-MM-YYYY HH:mm:ss'),
+      done: false,
+      important: false,
     }
 
     this.taskService.create(task).subscribe(res => {
       this.tasks.unshift(res);
       this.form.reset();
     });
-    this.sortArray();
+    this.sortService.sortArrayByLocalStorage(this.tasks);
   }
 
   remove(task: Task){
     this.taskService.remove(task).subscribe(() => {
       this.tasks = this.tasks.filter(t => t.id !== task.id)
-    }, err => console.error(err)
+    }
     );
-    this.sortArray();
+    this.sortService.sortArrayByLocalStorage(this.tasks);
+
   }
 
   check(task: Task) {
     this.taskService.edit(task).subscribe(res => {
-      this.sortArray();
-
+      this.sortService.sortArrayByLocalStorage(this.tasks);
     });
   }
 
-  sortArray() {
-    this.tasks.sort(function sortBool(a: any, b: any) {
-      return (a.done === b.done) ? 0 : b.done? -1 : 1;
+  removeCompleted() {
+    this.tasks.forEach(task => {
+      if(task.done){
+        this.taskService.remove(task).subscribe();
+      }
+    });
+    this.tasks = this.tasks.filter(t => !t.done)
+    this.sortService.sortArrayByLocalStorage(this.tasks);
+
+  }
+
+  markImportant(task: Task) {
+    task.important = !task.important;
+    this.taskService.edit(task).subscribe(res => {
+      this.sortService.sortArrayByLocalStorage(this.tasks);
+    });
+  }
+
+  moveUncompleted() {
+    this.tasks.forEach(task => {
+      if(!task.done){
+      const date = moment(task.date, 'DD-MM-YYYY').add(1, 'd');
+      task.date = date.format('DD-MM-YYYY');
+    this.taskService.edit(task).subscribe(res => {
+      this.tasks = this.tasks.filter(t => t != task);
+    
     })
   }
+    });
+  }
+
+  sortByCompleted() {
+    if(this.sortService.sort){
+      this.sortService.sortArrayByCompleteFirst(this.tasks);
+    }
+    else {
+      this.sortService.sortArrayByCompleteLast(this.tasks);
+    }
+    this.sortService.sort = !this.sortService.sort
+  }
+
+  sortByTime() {
+    if(this.sortService.sort){
+      this.sortService.sortArrayByTimeAsc(this.tasks);
+
+    }
+    else {
+      this.sortService.sortArrayByTimeDesc(this.tasks);
+
+    }
+    this.sortService.sort = !this.sortService.sort
+  }
+
+  sortByAlphabet() {
+    if(this.sortService.sort){
+      this.sortService.sortArrayByAlphabetAsc(this.tasks);
+    }
+    else {
+      this.sortService.sortArrayByAlphabetDesc(this.tasks);
+    }
+    this.sortService.sort = !this.sortService.sort
+  }
+
+  
 
   showModal(task: Task): void {
     this.editForm.patchValue({
@@ -86,6 +151,8 @@ export class OrganizerComponent implements OnInit {
     console.log(task)
 
   }
+
+  
 
   handleOk(): void {
 

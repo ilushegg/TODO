@@ -22,7 +22,10 @@
         <div class="main__today" *ngIf="choice === 'today'">
           <div class="main__today__header">
             <div>
-              <h1 class="main__today__title">Привет</h1>
+              <h1 class="main__today__title" *ngIf="(dateService.date | async | moment: 'HH')! >= '4' && (dateService.date | async | moment: 'HH')! < '11' ">Доброе утро</h1>
+              <h1 class="main__today__title" *ngIf="(dateService.date | async | moment: 'HH')! >= '11' && (dateService.date | async | moment: 'HH')! < '16' ">Добрый день</h1>
+              <h1 class="main__today__title" *ngIf="(dateService.date | async | moment: 'HH')! >= '16' && (dateService.date | async | moment: 'HH')! < '23' ">Добрый вечер</h1>
+              <h1 class="main__today__title" *ngIf="(dateService.date | async | moment: 'HH')! >= '23' && (dateService.date | async | moment: 'HH')! < '4' ">Доброй ночи</h1>
               <h1 class="main__today__title">Что вы запланировали на сегодня?</h1>
             </div>
             <div id="today">

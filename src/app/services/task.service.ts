@@ -8,13 +8,15 @@ import {v4 as guid} from 'uuid';
 })
 export class TaskService {
   tasks: Task[] | undefined = [];
-  keyWord = 'todo';
+  keyWord = 'todoID';
 
   constructor() { }
 
   load(date: moment.Moment): Observable<Task[]> {
     this.tasks = allStorage(this.keyWord);
-    this.tasks = this.tasks.filter(t => t.date === date.format('DD-MM-YYYY'));
+    console.log(this.tasks)
+    console.log(date)
+    this.tasks = this.tasks.filter(t => t.date?.includes(date.format('DD-MM-YYYY')));
     return of(this.tasks);
   }
 

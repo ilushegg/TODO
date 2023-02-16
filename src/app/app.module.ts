@@ -21,6 +21,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { MomentPipe } from './services/moment.pipe';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 
 registerLocaleData(ru);
 
@@ -46,6 +47,7 @@ registerLocaleData(ru);
     NzIconModule,
     NzInputModule,
     NzModalModule,
+    NzDropDownModule,
   ],
   providers: [
     { provide: NZ_I18N, useValue: ru_RU }

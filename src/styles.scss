@@ -6,7 +6,8 @@
 $index: calc(1vh + 1vw);
 $color: #2E2E2F;
 $dark-gray: #1F1F1F;
-$ligt-gray: #424242;
+$light-gray: #424242;
+$dark-white: #E4E4E4;
 $transition: .3s;
 
 * {
@@ -41,7 +42,7 @@ body {
 /* для Chrome/Edge/Safari */
 *::-webkit-scrollbar {
   height: 12px;
-  width: 12px;
+  width: 5px;
 }
 *::-webkit-scrollbar-track {
   background: none;
