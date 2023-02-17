@@ -1,31 +1,40 @@
+
 <nz-layout class="layout">
   <nz-sider nzCollapsible nzWidth="200px">
-    <div class="logo"></div>
-    <ul nz-menu nzTheme="dark" nzMode="inline">
+    <div class="logo"><span nz-icon nzType="setting" nzTheme="outline" (click)="showModal()"></span></div>
+      <nz-modal [(nzVisible)]="isVisibleModal" (nzOnCancel)="handleCancel()" [nzFooter]="null">
+        <ng-container *nzModalContent>
+          <div class="settings">
+            <div class="settings__title">Фон</div>
+            <ul class="settings__bgs">
+              <li *ngFor="let img of bgImages">
+                <img class="bg-img__button" [src]="img" alt="bg-img" (click)="changeBg(img)">
+              </li>
+            </ul>
+          </div>
+        </ng-container>
+      </nz-modal>
+    <ul class="sidemenu" nz-menu nzTheme="dark" nzMode="inline">
       <li nz-menu-item (click)="choice = 'today'; today()" nzSelected="true">
-        <span nz-icon nzType="bulb" nzTheme="outline"></span>
+        <span class="sidemenu__icon" nz-icon nzType="bulb" nzTheme="outline"></span>
         <span class="sidemenu__title">Сегодня</span>
       </li>
       <li nz-menu-item (click)="choice = 'calendar'">
-        <span nz-icon nzType="calendar" nzTheme="outline"></span>
+        <span class="sidemenu__icon" nz-icon nzType="calendar" nzTheme="outline"></span>
         <span class="sidemenu__title">Календарь</span>
-      </li>
-      <li nz-menu-item (click)="choice = 'all'">
-        <span nz-icon nzType="desktop"></span>
-        <span class="sidemenu__title">Все задачи</span>
       </li>
     </ul>
   </nz-sider>
   <nz-layout>
-    <nz-content>
+    <nz-content [ngStyle]="{'background-image': 'url(' + storageService.getCurrentImagePath() + ')'}" >
       <div class="container">
         <div class="main__today" *ngIf="choice === 'today'">
           <div class="main__today__header">
             <div>
-              <h1 class="main__today__title" *ngIf="(dateService.date | async | moment: 'HH')! >= '4' && (dateService.date | async | moment: 'HH')! < '11' ">Доброе утро</h1>
-              <h1 class="main__today__title" *ngIf="(dateService.date | async | moment: 'HH')! >= '11' && (dateService.date | async | moment: 'HH')! < '16' ">Добрый день</h1>
-              <h1 class="main__today__title" *ngIf="(dateService.date | async | moment: 'HH')! >= '16' && (dateService.date | async | moment: 'HH')! < '23' ">Добрый вечер</h1>
-              <h1 class="main__today__title" *ngIf="(dateService.date | async | moment: 'HH')! >= '23' && (dateService.date | async | moment: 'HH')! < '4' ">Доброй ночи</h1>
+              <h1 class="main__today__title" *ngIf="(dateService.date | async | moment: 'HH')! >= '4' && (dateService.date | async | moment: 'HH')! < '11' ">Доброе утро,</h1>
+              <h1 class="main__today__title" *ngIf="(dateService.date | async | moment: 'HH')! >= '11' && (dateService.date | async | moment: 'HH')! < '16' ">Добрый день,</h1>
+              <h1 class="main__today__title" *ngIf="(dateService.date | async | moment: 'HH')! >= '16' && (dateService.date | async | moment: 'HH')! < '23' ">Добрый вечер,</h1>
+              <h1 class="main__today__title" *ngIf="(dateService.date | async | moment: 'HH')! >= '23' && (dateService.date | async | moment: 'HH')! < '4' ">Доброй ночи,</h1>
               <h1 class="main__today__title">Что вы запланировали на сегодня?</h1>
             </div>
             <div id="today">
@@ -36,7 +45,13 @@
           </div>
           <app-organizer></app-organizer>
         </div>
-        <div class="main__month" *ngIf="choice === 'calendar'">
+        <div class="main__week" *ngIf="choice === 'week'">
+          <app-organizer></app-organizer>
+          <app-organizer></app-organizer>
+
+          <app-organizer></app-organizer>
+        </div>
+        <div class="main__calendar" *ngIf="choice === 'calendar'">
           <app-calendar></app-calendar>
           <app-organizer></app-organizer>
         </div>

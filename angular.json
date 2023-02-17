@@ -35,7 +35,10 @@
             "styles": [
               "src/theme.less",
               "src/styles.scss"
+              
             ],
+              
+            
             "scripts": []
           },
           "configurations": {
@@ -102,12 +105,13 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/ng-zorro-antd/ng-zorro-antd.dark.less",
               "src/styles.scss"
+             
             ],
             "scripts": []
           }
         }
+        
       }
     }
   }

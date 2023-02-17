@@ -32,7 +32,6 @@ export class OrganizerComponent implements OnInit {
   isVisibleModal = false;
 
   
-  
   constructor(private dateService: DateService, private taskService: TaskService, private formBuilder: FormBuilder, private sortService: SortService) { }
 
   ngOnInit(): void {
@@ -40,7 +39,6 @@ export class OrganizerComponent implements OnInit {
       switchMap(value => this.taskService.load(value))
     ).subscribe(res => {
       this.tasks = res;
-      
       this.sortService.sortArrayByLocalStorage(this.tasks);
     })
     

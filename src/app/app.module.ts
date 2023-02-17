@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -22,6 +22,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { MomentPipe } from './services/moment.pipe';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+
 
 registerLocaleData(ru);
 
@@ -52,6 +53,9 @@ registerLocaleData(ru);
   providers: [
     { provide: NZ_I18N, useValue: ru_RU }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule { 
+  
+}

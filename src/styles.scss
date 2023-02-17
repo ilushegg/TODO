@@ -8,6 +8,7 @@ $color: #2E2E2F;
 $dark-gray: #1F1F1F;
 $light-gray: #424242;
 $dark-white: #E4E4E4;
+$blue: #177DDC;
 $transition: .3s;
 
 * {
@@ -31,7 +32,7 @@ body {
   overflow: hidden;
   max-width: 100vw;
   max-height: 100vh;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 * {
@@ -114,3 +115,4 @@ body {
     opacity: 1;
   }
 }
+

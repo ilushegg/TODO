@@ -1,12 +1,11 @@
 @import './../../../styles.scss';
 
-
 .organizer {
   &__header {
     margin-bottom: 10px;
     display: flex;
     justify-content: flex-start;
-  animation: animFromDown $transition ease-in-out;
+    animation: animFromDown $transition ease-in-out;
 
   }
 
@@ -18,6 +17,7 @@
   overflow-x: hidden;
   max-height: 65vh;
   animation: animFromDown $transition ease-in-out;
+
 }
 &__add {
   position: absolute;
@@ -32,7 +32,7 @@
 
 }
 }
-
+//hehehehehhe vnissimo
 .task {
   padding: 20px;
   border-radius: $index;
@@ -42,6 +42,9 @@
   justify-content: space-between;
   align-items: center;
   animation: animFromUp .3s ;
+  &:nth-last-child(-n+1) {
+    margin-bottom: 0;
+  }
     &__start, &__end {
       display: flex;
       
@@ -90,12 +93,22 @@
   transition: all .3s;
   & span {
     color: $dark-white;
+    padding-right: 5px;
   }
 
   &:hover {
     color: $dark-white;
     background-color: $light-gray;
+    & span {
+      transform: scale(1.3);
+      transition: ease-in-out .3s;
+    }
 
+  }
+  &:not(:hover) {
+    & span {
+      transition: ease-in-out .3s;
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 
 <div class="organizer__header">
-  <a class="filter" nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu"><span nz-icon nzType="filter" nzTheme="outline" style="padding-right: 5px;"></span> Сортировать</a>
+  <a class="filter" nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu"><span nz-icon nzType="menu" nzTheme="outline"></span> Сортировать</a>
   <nz-dropdown-menu #menu="nzDropdownMenu">
     <ul nz-menu>
       <li nz-menu-item (click)="sortByCompleted()">По выполнению</li>
@@ -8,19 +8,20 @@
       <li nz-menu-item (click)="sortByAlphabet()">По алфавиту</li>
     </ul>
   </nz-dropdown-menu>
-  <a class="filter" (click)="removeCompleted()"><span nz-icon nzType="clear" nzTheme="outline" style="padding-right: 5px;"></span> Удалить завершенные</a>
+  <a class="filter" (click)="removeCompleted()"><span nz-icon nzType="clear" nzTheme="outline"></span> Удалить завершенные</a>
 
-  <a class="filter" (click)="moveUncompleted()"><span nz-icon nzType="frown" nzTheme="outline" style="padding-right: 5px;"></span> Перенести невыполненные на завтра</a>
+  <a class="filter" (click)="moveUncompleted()"><span nz-icon nzType="frown" nzTheme="outline"></span> Перенести невыполненные на завтра</a>
 </div>
 
 <div class="organizer__wrapper">
 
-  <ul *ngIf="tasks.length; else noTasks">
+  <ul class="task__wrapper" *ngIf="tasks.length; else noTasks">
     <li class="task" *ngFor="let task of tasks">
       <div class="task__start">
         <label class="task__check" nz-checkbox [(ngModel)]="task.done" (ngModelChange)="check(task)"></label>
         <div class="task__title" [ngStyle]="{
-          'text-decoration': task.done ? 'line-through' : 'none'
+          'text-decoration': task.done ? 'line-through' : 'none',
+          'color': task.done ? '#B1B1B1' : ''
         }">
           {{ task.title }}
         </div>

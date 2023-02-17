@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DateService } from './services/date.service';
+import { StorageService } from './services/storage.service';
+
 
 @Component({
   selector: 'app-root',
@@ -11,18 +13,42 @@ export class AppComponent{
 
   choice: string = 'today';
 
+  bgImages: string[] = [];
 
-  constructor(public dateService: DateService) {
+  isVisibleModal = false;
 
+
+
+  constructor(public dateService: DateService, public storageService: StorageService) {
+    this.bgImages.push('../assets/images/night-bg.jpg');
+    this.bgImages.push('../assets/images/day-bg.jpg');
+    this.bgImages.push('../assets/images/morning-bg.jpg');
+    this.bgImages.push('../assets/images/green-bg.jpg');
+    this.bgImages.push('../assets/images/red-bg.jpg');
   }
 
 
   today() {
     this.dateService.setDateToday();
     this.dateService.date.subscribe(res => {
-      console.log(res)
     })
   }
+
+  changeBg(img: string) {
+    this.storageService.setCurrentImagePath(img);
+
+  }
+
+  showModal(): void {
+    this.isVisibleModal = true;
+
+  }
+
+  handleCancel(): void {
+    this.isVisibleModal = false;
+  }
+
+
 
 
 }
