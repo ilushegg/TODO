@@ -10,12 +10,10 @@
       </ul>
     </nz-dropdown-menu>
     <a class="filter" (click)="removeCompleted()"><span nz-icon nzType="clear" nzTheme="outline"></span> Удалить завершенные</a>
-  
     <a class="filter" (click)="moveUncompleted()"><span nz-icon nzType="frown" nzTheme="outline"></span> Перенести невыполненные на следующий день</a>
   </div>
   
   <div class="organizer__content">
-  
     <ul class="task__wrapper" *ngIf="tasks.length; else noTasks">
       <li class="task" *ngFor="let task of tasks">
         <div class="task__start">
@@ -26,7 +24,6 @@
           }">
             {{ task.title }}
           </div>
-  
         </div>
         <div class="task__end">
           <span nz-icon class="task__icon task__favorite" nzType="star" [nzTheme]="task.important ? 'fill' : 'outline'" (click)="markImportant(task)"></span>
@@ -34,28 +31,25 @@
         <nz-modal [(nzVisible)]="isVisibleModal" (nzOnCancel)="handleCancel()" (nzOnOk)="edit()">
           <ng-container *nzModalContent>
             <form [formGroup]="editForm">
-              <textarea class="task__textarea" rows="4" formControlName="title" nz-input></textarea>
-            
+              <textarea class="task__textarea" rows="4" formControlName="title" nz-input></textarea> 
             </form>
           </ng-container>
         </nz-modal>
           <span class="task__icon task__remove" nz-icon nzType="close" nzTheme="outline" (click)="remove(task)"></span>
         </div>
-  
       </li>
     </ul>
     <ng-template #noTasks>
       <p class="organizer__empty">У вас пока нет задач на этот день.</p>
     </ng-template>
   </div>
+
   <div class="organizer__add">
     <form nz-form [formGroup]="form" (ngSubmit)="add()">
       <nz-input-group [nzPrefix]="prefixTemplateUser">        
           <input type="text" formControlName="title" nz-input placeholder="Добавить" />
       </nz-input-group>
       <ng-template #prefixTemplateUser><span nz-icon nzType="plus" nzTheme="outline"></span></ng-template>
-    
     </form>
-  
   </div>
 </div>

@@ -14,25 +14,25 @@ export class SortService {
   sortArrayByLocalStorage(tasks: Task[]) {
     try {
       const sort = localStorage.getItem(this.keyWord);
-      if(sort === "AlphabetAsc") {
+      if (sort === "AlphabetAsc") {
         this.sortArrayByAlphabetAsc(tasks);
         this.sort = false;
       }
-      else if(sort === "AlphabetDesc"){
+      else if (sort === "AlphabetDesc") {
         this.sortArrayByAlphabetDesc(tasks);
         this.sort = true;
 
       }
-      else if(sort === "TimeAsc"){
+      else if (sort === "TimeAsc") {
         this.sortArrayByTimeAsc(tasks);
         this.sort = true;
 
       }
-      else if(sort === "TimeDesc") {
+      else if (sort === "TimeDesc") {
         this.sortArrayByTimeDesc(tasks);
         this.sort = false;
       }
-      else if(sort === "CompleteFirst") {
+      else if (sort === "CompleteFirst") {
         this.sortArrayByCompleteFirst(tasks);
         this.sort = false;
       }
@@ -41,16 +41,16 @@ export class SortService {
         this.sort = true;
 
       }
-      
+
     }
-    catch(err) {
+    catch (err) {
 
     }
   }
 
   sortArrayByCompleteFirst(tasks: Task[]) {
     tasks.sort(function sortBool(a: any, b: any) {
-      return (a.done === b.done) ? 0 : b.done? 1 : -1;
+      return (a.done === b.done) ? 0 : b.done ? 1 : -1;
     })
     this.sortArrayByImportant(tasks);
 
@@ -59,7 +59,7 @@ export class SortService {
 
   sortArrayByCompleteLast(tasks: Task[]) {
     tasks.sort(function sortBool(a: any, b: any) {
-      return (a.done === b.done) ? 0 : b.done? -1 : 1;
+      return (a.done === b.done) ? 0 : b.done ? -1 : 1;
     })
     this.sortArrayByImportant(tasks);
 
@@ -67,9 +67,9 @@ export class SortService {
   }
 
   sortArrayByAlphabetAsc(tasks: Task[]) {
-    tasks.sort(function(a, b){
-      if(a.title < b.title) { return -1; }
-      if(a.title > b.title) { return 1; }
+    tasks.sort(function (a, b) {
+      if (a.title < b.title) { return -1; }
+      if (a.title > b.title) { return 1; }
       return 0;
     })
     this.sortArrayByImportant(tasks);
@@ -78,9 +78,9 @@ export class SortService {
   }
 
   sortArrayByAlphabetDesc(tasks: Task[]) {
-    tasks.sort(function(a, b){
-      if(a.title < b.title) { return 1; }
-      if(a.title > b.title) { return -1; }
+    tasks.sort(function (a, b) {
+      if (a.title < b.title) { return 1; }
+      if (a.title > b.title) { return -1; }
       return 0;
     })
     this.sortArrayByImportant(tasks);
@@ -88,9 +88,9 @@ export class SortService {
   }
 
   sortArrayByTimeAsc(tasks: Task[]) {
-    tasks.sort(function(a, b){
-      if(a.date! < b.date!) { return -1; }
-      if(a.date! > b.date!) { return 1; }
+    tasks.sort(function (a, b) {
+      if (a.date! < b.date!) { return -1; }
+      if (a.date! > b.date!) { return 1; }
       return 0;
     })
     this.sortArrayByImportant(tasks);
@@ -99,9 +99,9 @@ export class SortService {
   }
 
   sortArrayByTimeDesc(tasks: Task[]) {
-    tasks.sort(function(a, b){
-      if(a.date! < b.date!) { return 1; }
-      if(a.date! > b.date!) { return -1; }
+    tasks.sort(function (a, b) {
+      if (a.date! < b.date!) { return 1; }
+      if (a.date! > b.date!) { return -1; }
       return 0;
     })
     this.sortArrayByImportant(tasks);
@@ -110,10 +110,8 @@ export class SortService {
 
   private sortArrayByImportant(tasks: Task[]) {
     tasks.sort(function sortBool(a: any, b: any) {
-      return (a.important === b.important) ? 0 : b.important? 1 : -1;
+      return (a.important === b.important) ? 0 : b.important ? 1 : -1;
     })
   }
-
-
 
 }

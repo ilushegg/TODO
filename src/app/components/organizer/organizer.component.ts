@@ -15,7 +15,7 @@ import { Task } from '../../models/task.model';
 })
 export class OrganizerComponent implements OnInit {
 
-  form= this.formBuilder.group({
+  form = this.formBuilder.group({
     title: new FormControl('', [Validators.required, Validators.maxLength(150)])
   })
 
@@ -32,7 +32,7 @@ export class OrganizerComponent implements OnInit {
 
   isVisibleModal = false;
 
-  
+
   constructor(private dateService: DateService, private taskService: TaskService, private formBuilder: FormBuilder, private sortService: SortService, private nzMessageService: NzMessageService) { }
 
   ngOnInit(): void {
@@ -42,23 +42,22 @@ export class OrganizerComponent implements OnInit {
       this.tasks = res;
       this.sortService.sortArrayByLocalStorage(this.tasks);
     })
-    
   }
 
 
   add() {
-    if(this.form.invalid){
+    if (this.form.invalid) {
       const controlErrors: ValidationErrors = this.form.controls.title.errors!;
-      if(controlErrors['required']){
+      if (controlErrors['required']) {
         this.nzMessageService.info("Поле не должно быть пустым.");
       }
-      else{
+      else {
         this.nzMessageService.info("Поле не должно содержать более 150 символов.");
       }
       return;
     }
-      const task: Task = {
-      title:  this.form.controls.title.value!,
+    const task: Task = {
+      title: this.form.controls.title.value!,
       date: this.dateService.date.value.format('DD-MM-YYYY HH:mm:ss'),
       done: false,
       important: false,
@@ -71,13 +70,12 @@ export class OrganizerComponent implements OnInit {
     this.sortService.sortArrayByLocalStorage(this.tasks);
   }
 
-  remove(task: Task){
+  remove(task: Task) {
     this.taskService.remove(task).subscribe(() => {
       this.tasks = this.tasks.filter(t => t.id !== task.id)
     }
     );
     this.sortService.sortArrayByLocalStorage(this.tasks);
-
   }
 
   check(task: Task) {
@@ -88,13 +86,12 @@ export class OrganizerComponent implements OnInit {
 
   removeCompleted() {
     this.tasks.forEach(task => {
-      if(task.done){
+      if (task.done) {
         this.taskService.remove(task).subscribe();
       }
     });
     this.tasks = this.tasks.filter(t => !t.done)
     this.sortService.sortArrayByLocalStorage(this.tasks);
-
   }
 
   markImportant(task: Task) {
@@ -106,19 +103,19 @@ export class OrganizerComponent implements OnInit {
 
   moveUncompleted() {
     this.tasks.forEach(task => {
-      if(!task.done){
-      const date = moment(task.date, 'DD-MM-YYYY').add(1, 'd');
-      task.date = date.format('DD-MM-YYYY');
-    this.taskService.edit(task).subscribe(res => {
-      this.tasks = this.tasks.filter(t => t != task);
-    
-    })
-  }
+      if (!task.done) {
+        const date = moment(task.date, 'DD-MM-YYYY').add(1, 'd');
+        task.date = date.format('DD-MM-YYYY');
+        this.taskService.edit(task).subscribe(res => {
+          this.tasks = this.tasks.filter(t => t != task);
+
+        })
+      }
     });
   }
 
   sortByCompleted() {
-    if(this.sortService.sort){
+    if (this.sortService.sort) {
       this.sortService.sortArrayByCompleteFirst(this.tasks);
     }
     else {
@@ -128,19 +125,17 @@ export class OrganizerComponent implements OnInit {
   }
 
   sortByTime() {
-    if(this.sortService.sort){
+    if (this.sortService.sort) {
       this.sortService.sortArrayByTimeAsc(this.tasks);
-
     }
     else {
       this.sortService.sortArrayByTimeDesc(this.tasks);
-
     }
     this.sortService.sort = !this.sortService.sort
   }
 
   sortByAlphabet() {
-    if(this.sortService.sort){
+    if (this.sortService.sort) {
       this.sortService.sortArrayByAlphabetAsc(this.tasks);
     }
     else {
@@ -149,7 +144,7 @@ export class OrganizerComponent implements OnInit {
     this.sortService.sort = !this.sortService.sort
   }
 
-  
+
 
   showModal(task: Task): void {
     this.editForm.patchValue({
@@ -158,21 +153,17 @@ export class OrganizerComponent implements OnInit {
     this.isVisibleModal = true;
     this.task = task;
     console.log(task)
-
   }
 
-  
+
 
   edit(): void {
-    if(this.editForm.invalid){
+    if (this.editForm.invalid) {
       this.nzMessageService.info("Поле не должно быть пустым.");
       return;
     }
-
     this.task.title = this.editForm.controls.title.value!;
-
     this.taskService.edit(this.task).subscribe(res => {
-
     });
     this.isVisibleModal = false;
   }
@@ -185,7 +176,7 @@ export class OrganizerComponent implements OnInit {
 }
 
 
-  
+
 
 
 

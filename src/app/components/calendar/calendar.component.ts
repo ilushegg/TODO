@@ -18,10 +18,5 @@ export class CalendarComponent implements OnInit {
     this.dateService.changeDate(value);
   }
 
-  onPanelChange(change: { date: Date; mode: string }): void {
-    console.log(`Current value: ${change.date}`);
-    console.log(`Current mode: ${change.mode}`);
-  }
-
 
 }

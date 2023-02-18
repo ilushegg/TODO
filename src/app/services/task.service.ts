@@ -15,8 +15,6 @@ export class TaskService {
 
   load(date: moment.Moment): Observable<Task[]> {
     this.tasks = this.storageService.allStorage(this.keyWord);
-    console.log(this.tasks)
-    console.log(date)
     this.tasks = this.tasks.filter(t => t.date?.includes(date.format('DD-MM-YYYY')));
     return of(this.tasks);
   }
@@ -36,7 +34,6 @@ export class TaskService {
     localStorage.setItem(`${this.keyWord} ${task.id}`, JSON.stringify(task));
     return of(task);
   }
-
 
 }
 

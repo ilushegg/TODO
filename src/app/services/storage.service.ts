@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { v4 as guid } from 'uuid';
 
 @Injectable({
   providedIn: 'root'
@@ -30,22 +29,14 @@ export class StorageService {
     localStorage.setItem(`${this.keyWord}Current`, JSON.stringify(this.imgPath));
   }
 
-  // addImagePath(url: string) {
-  //   localStorage.setItem(`${this.keyWord} ${guid()}`, JSON.stringify(url));
-  // }
-
-  // getAllImagesPath() {
-  //   return this.allStorage(`${this.keyWord} `);
-  // }
-
   allStorage(keyWord: string) {
     var values = [],
       keys = Object.keys(localStorage),
       i = keys.length;
-      while (i--) {
-        if (keys[i].includes(keyWord)) {
-          values.push(JSON.parse(localStorage.getItem(keys[i])!));
-        }
+    while (i--) {
+      if (keys[i].includes(keyWord)) {
+        values.push(JSON.parse(localStorage.getItem(keys[i])!));
+      }
     }
     return values;
   }
