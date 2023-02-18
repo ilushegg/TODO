@@ -24,6 +24,10 @@
     text-align: center;
     animation: animFromDown $transition ease-in-out;
   }
+  &__add {
+    animation: animFromDown $transition ease-in-out;
+
+  }
 }
 
 .task {

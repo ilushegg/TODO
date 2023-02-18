@@ -81,8 +81,7 @@
               <h1
                 class="main__today__title"
                 *ngIf="
-                  (dateService.date | async | moment : 'HH')! >= 23 &&
-                  (dateService.date | async | moment : 'HH')! < 4
+                  (dateService.date | async | moment : 'HH')! >= 23
                 "
               >
                 Доброй ночи,
