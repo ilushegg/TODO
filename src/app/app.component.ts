@@ -20,12 +20,12 @@ export class AppComponent {
     public dateService: DateService,
     public storageService: StorageService
   ) {
-    this.bgImages.push('../assets/images/night-bg.jpg');
-    this.bgImages.push('../assets/images/day-bg.jpg');
-    this.bgImages.push('../assets/images/blue-bg.jpg');
-    this.bgImages.push('../assets/images/green-bg.jpg');
-    this.bgImages.push('../assets/images/red-bg.jpg');
-    this.bgImages.push('../assets/images/purple-bg.jpg');
+    this.bgImages.push('assets/images/night-bg.jpg');
+    this.bgImages.push('assets/images/day-bg.jpg');
+    this.bgImages.push('assets/images/blue-bg.jpg');
+    this.bgImages.push('assets/images/green-bg.jpg');
+    this.bgImages.push('assets/images/red-bg.jpg');
+    this.bgImages.push('assets/images/purple-bg.jpg');
   }
 
   today() {
