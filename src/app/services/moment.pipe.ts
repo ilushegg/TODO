@@ -7,8 +7,10 @@ import * as moment from 'moment';
 })
 export class MomentPipe implements PipeTransform {
   
-  transform(m: moment.Moment, format: string = 'MMMM YYYY'): string {
-    return m.format(format);
+  transform(m: moment.Moment, format: string = 'MMMM YYYY'): number {
+    return Number(m.format(format));
   }
+
+
 
 }

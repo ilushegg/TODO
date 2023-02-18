@@ -15,8 +15,7 @@ export class AppComponent{
 
   bgImages: string[] = [];
 
-  isVisibleModal = false;
-
+  logo = true;
 
 
   constructor(public dateService: DateService, public storageService: StorageService) {
@@ -39,16 +38,9 @@ export class AppComponent{
 
   }
 
-  showModal(): void {
-    this.isVisibleModal = true;
-
+  collapse() {
+    this.logo = !this.logo;
   }
-
-  handleCancel(): void {
-    this.isVisibleModal = false;
-  }
-
-
 
 
 }

@@ -1,41 +1,60 @@
 @import './../../../styles.scss';
 
 .organizer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   &__header {
     margin-bottom: 10px;
     display: flex;
     justify-content: flex-start;
     animation: animFromDown $transition ease-in-out;
-
   }
 
-  &__wrapper {
+  &__content {
   padding: 25px;
-  border-radius: $index;
+  margin-bottom: $index;
+  border-radius: $border-radius;
   background: $dark-gray;
   overflow-y: scroll;
   overflow-x: hidden;
   max-height: 65vh;
   animation: animFromDown $transition ease-in-out;
 
+  
 }
-&__add {
-  position: absolute;
-  bottom: 1%;
-  left: 25px;
-  right: 25px;
-}
+// &__add {
+//   position: absolute;
+//   bottom: 1%;
+//   left: 25px;
+//   right: 25px;
+// }
 
 &__empty {
   text-align: center;
-  animation: animFromUp $transition ease-in-out;
+  animation: animFromDown $transition ease-in-out;
 
 }
+
+@media(max-width: 800px) {
+  .organizer {
+    &__header {
+      flex-direction: column;
+    }
+  }
+  .filter {
+    margin-bottom: calc($index * 0.5);
+  }
+
+  .task {
+    padding: 10px;
+  }
 }
-//hehehehehhe vnissimo
+}
+
 .task {
   padding: 20px;
-  border-radius: $index;
+  border-radius: $border-radius;
   background: #262626;
   margin-bottom: $index;
   display: flex;
@@ -47,7 +66,7 @@
   }
     &__start, &__end {
       display: flex;
-      
+      align-items: center;
     }
 
     &__check {
@@ -55,14 +74,13 @@
     }
     
     &__title {
-      font-size: 1rem;
+      font-size: 14px;
       max-width: 50vw;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      word-wrap: break-word;
     }
 
     &__icon {
-      font-size: calc($index * 0.8);
+      font-size: 14px;
       filter: invert(13%) sepia(6%) saturate(184%) hue-rotate(202deg) brightness(90%) contrast(85%);
       display: flex;
       flex-direction: row;
@@ -85,12 +103,15 @@
 
 .filter {
   padding: 10px;
-  border-radius: 15px;
+  border-radius: $border-radius;
   background-color: $dark-gray;
   font-size: 14px;
-  margin-left: 5px;
+  margin-right: 5px;
   color: $dark-white;
   transition: all .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   & span {
     color: $dark-white;
     padding-right: 5px;
@@ -114,7 +135,7 @@
 
 nz-input-group {
   padding: 15px !important;
-  border-radius: $index !important;
+  border-radius: $border-radius !important;
 
 
 }
@@ -125,13 +146,49 @@ nz-input-group {
 }
 
 [nz-menu] {
-  border-radius: $index !important;
+  border-radius: $border-radius !important;
 }
 
 [nz-menu-item] {
   padding: 10px;
-  border-radius: $index !important;
+  border-radius: $border-radius !important;
 
+}
+
+
+@media(max-width: 750px) {
+  .organizer {
+    &__header {
+      flex-direction: column;
+    }
+  }
+  .filter {
+    margin-bottom: calc($index * 0.5);
+  }
+
+  .task {
+    padding: 10px;
+  }
+}
+
+@media(max-width: 500px) {
+  .organizer {
+    &__content { 
+      padding: 10px;
+    }
+  }
+  .filter {
+    margin-bottom: calc($index * 0.5);
+    font-size: 12px;
+  }
+
+  .task {
+    padding: 10px;
+
+    &__title {
+      max-width: 40vw;
+    }
+  }
 }
 
 

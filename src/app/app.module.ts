@@ -21,8 +21,9 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { MomentPipe } from './services/moment.pipe';
+import { MomentPipeString } from './services/moment-string.pipe';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
-
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 registerLocaleData(ru);
 
@@ -32,6 +33,7 @@ registerLocaleData(ru);
     CalendarComponent,
     OrganizerComponent,
     MomentPipe,
+    MomentPipeString,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +51,7 @@ registerLocaleData(ru);
     NzInputModule,
     NzModalModule,
     NzDropDownModule,
+    NzMessageModule,
   ],
   providers: [
     { provide: NZ_I18N, useValue: ru_RU }

@@ -4,6 +4,7 @@
 
 
 $index: calc(1vh + 1vw);
+$border-radius: 15px;
 $color: #2E2E2F;
 $dark-gray: #1F1F1F;
 $light-gray: #424242;
@@ -74,6 +75,12 @@ body {
   height: 18px !important;
   width: 18px !important;
 }
+
+.ant-message-notice-content {
+  border-radius: 15px !important;
+}
+
+
 
 
 @keyframes animFromDown {

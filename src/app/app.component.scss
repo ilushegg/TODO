@@ -1,11 +1,18 @@
 @import './../styles.scss';
 
 
-// .logo {
-//   height: 32px;
-//   margin: 16px;
-//   background: rgba(255, 255, 255, 0.3);
-// }
+.logo {
+  padding: 15px;
+
+  display: flex;
+  justify-content: center;
+  & img {
+    height: 30px;
+    animation: animShow .6s ease;
+  }
+  
+
+}
 
 .layout {
   height: 100vh;
@@ -25,7 +32,7 @@ nz-content {
   background-position: center;
   background-size: cover;
   animation: animShow 1s;
-  transition: background-image 1s ease
+  transition: background-image 1s ease;
 }
 
 .settings {
@@ -40,8 +47,8 @@ nz-content {
 }
 
 .bg-img__button {
-  height: 50px;
-  width: 50px;
+  height: 30px;
+  width: 30px;
   object-fit: cover;
   border: 1px solid transparent;
   border-radius: 2px;
@@ -52,6 +59,7 @@ nz-content {
     border-radius: 2px;
   }
 }
+
 
 
 
@@ -74,7 +82,7 @@ nz-breadcrumb {
     &__title {
       font-weight: 900;
       line-height: 1.5;
-      font-size: calc(1.5 * $index);
+      font-size: 32px;
     }
 
     &__header {
@@ -84,20 +92,13 @@ nz-breadcrumb {
     }
   }
 
-  &__week {
-    overflow-x: scroll;
-    display: flex;
-    & app-organizer {
-      margin-right: 15px;
-    }
-  }
-
   &__calendar {
   display: flex;
   justify-content: space-between;
 
   & app-calendar {
-    margin-right: 15px;
+    margin-right: $index;
+    margin-bottom: $index;
   }
 
   & app-organizer {
@@ -151,5 +152,73 @@ nz-breadcrumb {
     & .sidemenu__icon {
       transition: ease-in-out .3s;
     }
+  }
+}
+
+@media(max-width: 1070px) {
+  nz-content {
+
+      overflow-y: auto;
+
+  }
+  .main{
+    & app-calendar {
+      margin-right: 0;
+    }
+  &__calendar {
+    flex-direction: column;
+    align-items: center;
+    & app-organizer {
+      max-width: 90vw;
+      width: 100%;
+    }
+  }
+  }
+}
+
+
+
+@media(max-width: 768px) {
+  nz-sider {
+    position: absolute;
+    height: 100vh;
+    z-index: 3;
+  }
+  nz-content {
+    margin-left: 50px;
+  }
+  .main__today__title {
+    font-size: 24px;
+  }
+  #week {
+    font-size: 20px;
+  }
+  #day {
+    font-size: 40px;
+  }
+  #month {
+    font-size: 12px;
+  }
+}
+
+@media(max-width: 620px) {
+  .main__today__title {
+    font-size: 20px;
+  }
+  #week {
+    font-size: 16px;
+  }
+  #day {
+    font-size: 30px;
+  }
+  #month {
+    font-size: 10px;
+  }
+  
+}
+
+@media(max-width: 520px) {
+  .main__today__title {
+    font-size: 16px;
   }
 }

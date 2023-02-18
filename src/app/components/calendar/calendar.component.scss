@@ -4,8 +4,19 @@
   border-radius: $index;
   padding: 25px;
   background-color: $dark-gray;
-  width: 400px;
+  max-width: 400px;
   animation: animFromDown calc($transition / 2) ease-in-out;
 
+}
+
+@media (max-width: 500px) {
+  .calendar__wrapper {
+    max-width: 350px;
+  }
+}
+@media (max-width: 420px) {
+  .calendar__wrapper {
+    width: 300px;
+  }
 }
 

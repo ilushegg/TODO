@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import * as moment from 'moment';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { switchMap, Observable } from 'rxjs';
 import { DateService } from 'src/app/services/date.service';
 import { SortService } from 'src/app/services/sort.service';
@@ -15,11 +16,11 @@ import { Task } from '../../models/task.model';
 export class OrganizerComponent implements OnInit {
 
   form= this.formBuilder.group({
-    title: new FormControl('', Validators.required)
+    title: new FormControl('', [Validators.required, Validators.maxLength(150)])
   })
 
   editForm = this.formBuilder.group({
-    title: ['', Validators.required]
+    title: ['', [Validators.required, Validators.maxLength(150)]]
   })
   task: Task = {
     title: '',
@@ -32,7 +33,7 @@ export class OrganizerComponent implements OnInit {
   isVisibleModal = false;
 
   
-  constructor(private dateService: DateService, private taskService: TaskService, private formBuilder: FormBuilder, private sortService: SortService) { }
+  constructor(private dateService: DateService, private taskService: TaskService, private formBuilder: FormBuilder, private sortService: SortService, private nzMessageService: NzMessageService) { }
 
   ngOnInit(): void {
     this.dateService.date.pipe(
@@ -46,7 +47,17 @@ export class OrganizerComponent implements OnInit {
 
 
   add() {
-    const task: Task = {
+    if(this.form.invalid){
+      const controlErrors: ValidationErrors = this.form.controls.title.errors!;
+      if(controlErrors['required']){
+        this.nzMessageService.info("Поле не должно быть пустым.");
+      }
+      else{
+        this.nzMessageService.info("Поле не должно содержать более 150 символов.");
+      }
+      return;
+    }
+      const task: Task = {
       title:  this.form.controls.title.value!,
       date: this.dateService.date.value.format('DD-MM-YYYY HH:mm:ss'),
       done: false,
@@ -152,8 +163,11 @@ export class OrganizerComponent implements OnInit {
 
   
 
-  handleOk(): void {
-
+  edit(): void {
+    if(this.editForm.invalid){
+      this.nzMessageService.info("Поле не должно быть пустым.");
+      return;
+    }
 
     this.task.title = this.editForm.controls.title.value!;
 
