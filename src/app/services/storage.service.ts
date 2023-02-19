@@ -9,7 +9,7 @@ export class StorageService {
   keyWord = 'todoImg'
 
   constructor() { }
-  private imgPath = '../assets/images/night-bg.jpg';
+  private imgPath = 'assets/images/night-bg.jpg';
 
   getCurrentImagePath(): string {
     let imgPath = localStorage.getItem(`${this.keyWord}Current`)!;

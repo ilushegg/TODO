@@ -28,6 +28,7 @@ nz-content {
   background-size: cover;
   animation: animShow 1s;
   transition: background-image 1s ease;
+  overflow-y: scroll;
 }
 
 .settings {
@@ -140,7 +141,7 @@ nz-breadcrumb {
 
 @media (max-width: 1070px) {
   nz-content {
-    overflow-y: auto;
+    overflow-y: scroll;
   }
   .main {
     & app-calendar {
