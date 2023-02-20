@@ -108,7 +108,6 @@ export class OrganizerComponent implements OnInit {
         task.date = date.format('DD-MM-YYYY');
         this.taskService.edit(task).subscribe(res => {
           this.tasks = this.tasks.filter(t => t != task);
-
         })
       }
     });

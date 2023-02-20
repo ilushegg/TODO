@@ -139,6 +139,11 @@ nz-breadcrumb {
   }
 }
 
+[nz-menu-item] {
+  border-radius: 8px;
+}
+
+
 @media (max-width: 1070px) {
   nz-content {
     overflow-y: scroll;

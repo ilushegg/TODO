@@ -87,6 +87,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   & span {
     color: $dark-white;
     padding-right: 5px;
@@ -123,6 +124,8 @@ nz-input-group {
 [nz-menu-item] {
   padding: 10px;
   border-radius: $border-radius !important;
+  display: flex;
+  justify-content: center;
 }
 
 @media (max-width: 750px) {

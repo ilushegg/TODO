@@ -30,7 +30,6 @@ export class AppComponent {
 
   today() {
     this.dateService.setDateToday();
-    this.dateService.date.subscribe((res) => {});
   }
 
   changeBg(img: string) {

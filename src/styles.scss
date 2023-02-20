@@ -55,15 +55,15 @@ body {
 
 
 .ant-modal-content {
-  border-radius: $index !important;
+  border-radius: $border-radius !important;
   & [nz-input]  {
-    margin-top: 15px;
+    margin-top: 30px;
     height: 40px;
-    border-radius: $index !important;
+    border-radius: $border-radius !important;
   }
 
   & [nz-button] {
-    border-radius: $index !important;
+    border-radius: $border-radius !important;
 
   }
 }
